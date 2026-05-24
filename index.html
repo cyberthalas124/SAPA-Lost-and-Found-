@@ -8,23 +8,45 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Login Modal -->
-    <div id="loginModal" class="modal">
+    <!-- Student Login Modal -->
+    <div id="studentLoginModal" class="modal">
         <div class="modal-content">
             <div style="color: var(--primary-red); font-size: 3.5rem; margin-bottom: 15px;"><i class="fa-solid fa-graduation-cap"></i></div>
             <h3 class="modal-title">Student Login</h3>
-            <p style="color: var(--text-muted);">กรุณากรอกข้อมูลเพื่อเข้าสู่ระบบ</p>
+            <p style="color: var(--text-muted);">กรุณากรอกข้อมูลเพื่อเข้าสู่ระบบนักเรียน</p>
             
             <div class="modal-input-wrapper" style="margin-top: 20px;">
-                <input type="text" id="studentIdInput" class="modal-input" placeholder="รหัสนักเรียน 5 หลัก " maxlength="5" style="margin-bottom: 15px;">
-                <input type="password" id="thaiIdInput" class="modal-input" placeholder="เลขบัตรประชาชน 13 หลัก" maxlength="13">
+                <input type="text" id="studentIdInput" class="modal-input" placeholder="รหัสนักเรียน 5 หลัก" maxlength="5" style="margin-bottom: 15px;">
+                <input type="password" id="studentPasswordInput" class="modal-input" placeholder="รหัสนักเรียน 5 หลัก">
             </div>
 
             <div style="display: flex; flex-direction: column; gap: 12px;">
-                <button class="btn btn-register" style="width: 100%; padding: 15px; font-size: 1.1rem;" onclick="handleLogin()">
+                <button class="btn btn-register" style="width: 100%; padding: 15px; font-size: 1.1rem;" onclick="handleStudentLogin()">
                     <i class="fa-solid fa-right-to-bracket"></i> เข้าสู่ระบบ
                 </button>
-                <button class="btn" style="background: transparent; color: #999;" onclick="closeModal('loginModal')">ยกเลิก</button>
+                <button class="btn" style="background: transparent; color: #999;" onclick="closeModal('studentLoginModal')">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="modal">
+        <div class="modal-content">
+            <div style="color: var(--primary-orange); font-size: 3.5rem; margin-bottom: 15px;"><i class="fa-solid fa-shield"></i></div>
+            <h3 class="modal-title">Admin Login</h3>
+            <p style="color: var(--text-muted);">กรุณากรอกข้อมูลเพื่อเข้าสู่ระบบผู้ดูแล</p>
+            
+            <div class="modal-input-wrapper" style="margin-top: 20px;">
+                <input type="text" id="adminIdInput" class="modal-input" placeholder="รหัสผู้ดูแล" style="margin-bottom: 15px;">
+                <input type="password" id="adminPasswordInput" class="modal-input" placeholder="รหัสผ่าน">
+                
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <button class="btn btn-register" style="width: 100%; padding: 15px; font-size: 1.1rem; background: var(--primary-orange);" onclick="handleAdminLogin()">
+                    <i class="fa-solid fa-right-to-bracket"></i> เข้าสู่ระบบ
+                </button>
+                <button class="btn" style="background: transparent; color: #999;" onclick="closeModal('adminLoginModal')">ยกเลิก</button>
             </div>
         </div>
     </div>
@@ -42,8 +64,8 @@
         </div>
         <div class="navbar-right" id="nav-actions">
             <div id="guest-btns">
-                <button class="btn btn-login" onclick="openModal('loginModal')">เข้าสู่ระบบ</button>
-                <button class="btn btn-register">ลงทะเบียน</button>
+                <button class="btn btn-login" onclick="openModal('studentLoginModal')">นักเรียน</button>
+                <button class="btn btn-login" style="background: var(--primary-orange);" onclick="openModal('adminLoginModal')">ผู้ดูแล</button>
             </div>
             <div id="auth-actions" class="hidden">
                 <div class="nav-icons">
@@ -74,7 +96,7 @@
                     <input type="text" class="search-input" placeholder="ค้นหาของหาย เช่น กระเป๋าตังค์, กุญแจ, สมุด...">
                     <button class="btn-search" onclick="window.location.href='search.html'">ค้นหา</button>
                 </div>
-                <p class="mt-4" style="color: var(--text-muted);">กรุณา <a href="#" onclick="openModal('loginModal')" style="color: var(--primary-red); font-weight: 600;">เข้าสู่ระบบ</a> เพื่อแจ้งรายการของหาย/พบของ</p>
+                <p class="mt-4" style="color: var(--text-muted);">กรุณา <a href="#" onclick="openModal('studentLoginModal')" style="color: var(--primary-red); font-weight: 600;">เข้าสู่ระบบ</a> เพื่อแจ้งรายการของหาย/พบของ</p>
             </div>
         </div>
     </section>
